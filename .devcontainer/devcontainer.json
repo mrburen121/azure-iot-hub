@@ -1,0 +1,28 @@
+{
+  "name": "azure-iot-hub",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "VARIANT": "14-bullseye"
+    }
+  },
+  "runArgs": ["--network=host"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "johnpapa.angular2",
+        "esbenp.prettier-vscode",
+        "angular.ng-template",
+        "vsciot-vscode.azure-iot-toolkit"
+      ]
+    }
+  },
+  "mounts": ["source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"],
+
+  "remoteEnv": {
+    "SSH_CONNECTION": "${localEnv:SSH_CONNECTION}",
+    "TESTENV": "TESTVARIABLE"
+  },
+  "remoteUser": "node"
+}
